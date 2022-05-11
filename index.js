@@ -286,18 +286,16 @@ Using the annoyingSong function below do the following:
 4. Each time the annoyingSong is run from this loop, it should console.log the string that was returned. 
 */
 
-let StartingNumber = 99;
-function annoyingSong(/*add your code here*/) {
+function annoyingSong(startingNumber) {
   /*add your code here*/
-  return ('${StartingNumber} bottles of soda on the wall, ${StartingNumber} bottles of soda, take one down pass it around ${StartingNumber - 1} bottles of soda on the wall');
-}
+  while (startingNumber > 0) {
+    startingNumber--;
+    console.log('${StartingNumber} bottles of soda on the wall, ${StartingNumber} bottles of soda, take one down pass it around ${StartingNumber - 1} bottles of soda on the wall');
+    if (startingNumber <= 0) { break };
+  }
 
-while (startingNumber > 0) {
-  console.log(annoyingSong(StartingNumber));
-  startingNumber--;
+annoyingSong(StartingNumber);
 
-  if (startingNumber <= 0) { break };
-}
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
