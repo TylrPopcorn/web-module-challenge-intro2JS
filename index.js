@@ -148,29 +148,27 @@ NOTE 2: This is a great time to check the tests to see what it expects, versus w
 
 
 function hungryDog(weight, age) {
-  let Sent = ""
-  if (age >= .59 && age <= 1) {
-    return Sent + ((weight / 10))
-  } else if (age >= .34 && age <= .58) {
-    return Sent + ((weight / 5) * 100)
-  } else if (age <= .33) {
-    return Sent + ((weight / 4) * 100)
-  }
-
-  if (age >= 1) {
-    if (weight <= 5) {
-      console.log(weight * .05)
-    } else if (weight <= 10) {
-      console.log(weight * .04)
-    } else if (weight <= 14) {
-      console.log(weight * .03)
-    } else if (weight >= 15) {
-      console.log(weight * .02)
-    }
-  }
+ if (age >=1 && weight <=5){
+   return weight * 0.05;
+ } else if (age >=1 && weight >=6 && weight <= 10){
+   return weight * 0.04;
+ } else if (age >=1 && weight >= 11 && weight <= 15){
+   return weight *0.03;
+ } else if (age >=1 && weight > 15){
+   return weight *0.02;
+ } else if (age < 1 && age >= 0.583){ 
+   return weight * 0.04;
+} else if (age < 0.583 && age >= 0.0333){
+  return weight * 0.05
+} else if (age < 0.333){
+  return weight * .10
+} else {
+  return false;
 }
 
-hungryDog(4, 3);
+}
+
+hungryDog(15, 1);
 
 
 
@@ -197,46 +195,28 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 
 function game(user, computer) {
   /*add your code here*/
-  if (user == "scissors") {
-    if (computer == "rock") {
-      return "lose";
-    } else if (computer == "paper") {
-      return "win";
-    }
-  } else if (user == "rock") {
-    if (computer == "paper") {
-      return "lose";
-    } else if (computer == 'scissors') {
-      return "win";
-    }
-  } else if (user == "paper") {
-    if (computer == "rock") {
-      return "win";
-    } else if (computer == "scissors") {
-      return "lose";
-    }
+  if (user == computer){
+    return "it's a tie";
+  } else if (user == "rock" && computer == "scissors"){
+    return "you win!";
+  } else if (user == "paper" && computer == "rock") {
+    return "you win!";
+  } else if (user == "scissors" && computer == "paper"){
+    return "you win!"
+  } else {
+    return "you lose!";
   }
-  return "tie";
 }
 
-let computerChoice = Math.random();
-if (computerChoice < 0.4) {
-  computerChoice = "rock";
-} else if (computerChoice > 0.4 && computerChoice < 0.6) {
-  computerChoice = "paper";
-} else {
-  computerChoice = "scissors";
+let comp = Math.random();
+if (comp <= 0.34){
+  comp = 'rock';
+} else if (comp <= 0.67) {
+  comp = 'paper';
+} else if (comp > 0.67) {
+  comp = 'scissors'
 }
-let result = game("rock", computerChoice);
-
-if (result == "win") {
-  console.log("you win!");
-} else if (result == "tie") {
-  console.log("it's a tie");
-} else if (result == "lose") {
-  console.log("you lose!");
-}
-
+game("paper", comp);
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
 //Metric Converter 
@@ -250,11 +230,10 @@ Using the miles function below do the following:
 
 function miles(kilometers) {
   /*add your code here*/
-  return (kilometers / 1.609344)
+  return kilometers * 0.621371;
 }
 
-let kilometers = 8.04672;
-console.log(miles(kilometers));
+console.log(miles(2));
 
 //Task 5b - Feet to CM
 /*
@@ -264,13 +243,12 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-let cm = 30.48;
 function feet(cms) {
   /*add your code here*/
-  return Math.floor(cms * 0.0328084);
+  return cms / 30.48;
 }
 
-console.log(feet(cm))
+console.log(feet(150))
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -288,13 +266,12 @@ Using the annoyingSong function below do the following:
 
 function annoyingSong(startingNumber) {
   /*add your code here*/
-  while (startingNumber > 0) {
-    startingNumber--;
-    console.log('${StartingNumber} bottles of soda on the wall, ${StartingNumber} bottles of soda, take one down pass it around ${StartingNumber - 1} bottles of soda on the wall');
-    if (startingNumber <= 0) { break };
+  for (let i = startingNumber; i>0; i--){
+    return `${i} bottles of soda on the wall, ${i} bottles of soda, take one down pass it around ${i-1} bottles of soda on the wall`
   }
+}
 
-annoyingSong(StartingNumber);
+annoyingSong(4);
 
 
 
@@ -315,28 +292,20 @@ Using the grade function below do the following:
 
 function grade(numb) {
   /*Your Code here */
-
-  let grades = ["A", "B", "C", "D"];
-  let grades2 = grades;
-  grades["A"] = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100];
-  grades["B"] = [80, 81, 82, 83, 84, 85, 86, 87, 88, 89];
-  grades["C"] = [70, 71, 72, 73, 74, 75, 76, 77, 78, 79];
-  grades["D"] = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69];
-  /*--------*/
-
-  for (let i = 0; i < grades2.length; i++) {
-
-    for (let i2 = 0; i2 < grades[grades2[i]].length; i2++) {
-      if (grades[grades2[i]][i2] == numb) {
-        return grades2[i]
-      }
-    }
+  if (numb >= 90){
+    return 'you got an A'
+  } else if (numb < 90 && numb >= 80) {
+    return 'you got a B'
+  } else if (numb <80 && numb >=70){
+    return 'you got a C'
+  } else if (numb <70 && numb >=60){
+    return 'you got a D'
+  } else if (numb <60){
+    return 'you got an F'
   }
-
-  return 'F'
 }
 
-console.log('you got a ' + grade(70));
+console.log(grade(70));
 
 
 /*💪💪💪💪💪💪💪💪💪💪 Stretch 💪💪💪💪💪💪💪💪💪💪*/
